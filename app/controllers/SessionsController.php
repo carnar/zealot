@@ -29,7 +29,14 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// validate
+		$input = Input::all();
+		$attempt = Auth::attempt([
+			'email' => $input['email'],
+			'password' => $input['password']
+		]);
+		if($attempt) return Redirect::intended('/');
+		dd('problem');
 	}
 
 	/**

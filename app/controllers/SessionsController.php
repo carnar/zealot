@@ -3,16 +3,6 @@
 class SessionsController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
@@ -35,41 +25,8 @@ class SessionsController extends \BaseController {
 			'email' => $input['email'],
 			'password' => $input['password']
 		]);
-		if($attempt) return Redirect::intended('/');
-		dd('problem');
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+		if($attempt) return Redirect::intended('/')->with('flash_message', 'You have been logged in!');
+		return Redirect::back()->with('flash_message', 'Invalid credentials')->withInput();
 	}
 
 	/**
@@ -78,9 +35,10 @@ class SessionsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+		Auth::logout();
+		return Redirect::home()->with('flash_message', 'You have been logged out.');
 	}
 
 }

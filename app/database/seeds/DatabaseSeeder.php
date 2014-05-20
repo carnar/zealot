@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('Betting_poolsTableSeeder');
 		$this->call('TournamentsTableSeeder');
 		$this->call('TeamsTableSeeder');
+		$this->call('MatchesTableSeeder');
 	}
 
 }

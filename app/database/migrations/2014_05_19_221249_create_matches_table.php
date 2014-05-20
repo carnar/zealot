@@ -20,7 +20,7 @@ class CreateMatchesTable extends Migration {
 			$table->foreign('team_b_id')->references('id')->on('teams')->onDelete('cascade');
 			$table->integer('score_a')->nullable();
 			$table->integer('score_b')->nullable();
-			$table->datetime('date');
+			$table->datetime('date_gt');
 			$table->timestamps();
 		});
 	}

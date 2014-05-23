@@ -1,5 +1,7 @@
 <?php
 
+use BettingPool\MatchHandler;
+
 class HomeController extends BaseController {
 
 	/*
@@ -17,6 +19,23 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+		$scores = [
+			'score_a' => 1,
+			'score_b' => 3,
+		];
+
+		$match = new MatchHandler(Match::find(1));
+		
+		if($match->setScore($scores))
+		{
+			echo "Done";
+		}
+		else
+		{
+			echo "Error";
+		}
+		dd(' !!');
+		
 		return View::make('hello');
 	}
 

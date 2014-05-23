@@ -1,7 +1,9 @@
 <?php
-Route::get('/', ['as' => 'home' ,function(){
-	return View::make('hello');
-}]);
+
+Route::get('/', 'HomeController@showWelcome');
+// Route::get('/', ['as' => 'home' ,function(){
+// 	return View::make('hello');
+// }]);
 
 Route::get('profile', function()
 {

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
 * Match Manager
 */
-class MatchHandler {
+class MatchHandler implements MatchInterface {
 	
 	protected $match;
 
@@ -13,7 +13,9 @@ class MatchHandler {
 	{
 		$this->match = $match;
 	}
-	
+	/**
+	 * {@inheritdoc}
+	 */
 	public function setScore(array $scores)
 	{
 		$this->match->score_a = $scores['score_a'];
@@ -21,9 +23,16 @@ class MatchHandler {
 		return $this->match->save();
 	}
 
-	public function setTeams(array $teams)
+	public function getScore()
 	{
 		# code...
+	}
+
+	public function setTeams($teamAId, $teamBId)
+	{
+		$this->match->team_a_id = $teamAId;
+		$this->match->team_b_id = $teamBId;
+		return $this->match->save();
 	}
 
 }

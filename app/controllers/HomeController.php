@@ -19,7 +19,7 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$scores = [
+/*		$scores = [
 			'score_a' => 1,
 			'score_b' => 3,
 		];
@@ -33,8 +33,18 @@ class HomeController extends BaseController {
 		else
 		{
 			echo "Error";
+		}*/
+
+		$match = new MatchHandler(Match::find(51));
+		if($match->setTeams(1, '2'))
+		{
+			echo 'OK';
 		}
-		dd(' !!');
+		else
+		{
+			echo "Error";
+		}
+		dd(' !');
 		
 		return View::make('hello');
 	}

@@ -16,6 +16,7 @@ class CreateTournamentsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->boolean('multi');
+			$table->boolean('is_default');
 			$table->integer('betting_pool_id')->unsigned();
 			$table->foreign('betting_pool_id')->references('id')->on('betting_pools')->onDelete('cascade');
 			$table->timestamps();
